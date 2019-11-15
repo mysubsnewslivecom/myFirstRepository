@@ -1,0 +1,27 @@
+#!/bin/bash
+
+if [ $# -eq 0 ] ;then
+    echo "No parameter passed"
+    exit 2
+fi
+
+number=$#
+param=`echo $@`
+
+for i in $param
+do
+
+    if [ ! -f $i ]; then
+        echo "file does not exists. backup failed"
+    else
+        echo $i
+    fi
+done
+
+counter=1
+while [ $counter -le $number ]
+do
+echo "$"$counter"" > /dev/null
+counter=$(( $counter + 1 ))
+done
+
