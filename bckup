@@ -14,14 +14,7 @@ do
     if [ ! -f $i ]; then
         echo "file does not exists. backup failed"
     else
-        echo $i
+        cp -iv ${i} ${i}_$(date +%Y%m%d%H%M%S)
     fi
-done
-
-counter=1
-while [ $counter -le $number ]
-do
-echo "$"$counter"" > /dev/null
-counter=$(( $counter + 1 ))
 done
 
