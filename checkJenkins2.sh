@@ -1,7 +1,7 @@
 #!/bin/bash
 clear
 
-source /home/kishen/Workspace/config/env.sh
+source //etc/profile.d/env.sh
 scriptname=$(basename $0 .sh) 
 scriptlog=/tmp/$scriptname.log
 
@@ -25,7 +25,7 @@ while getopts j: name
         *) usage ;;
      esac
    done
-program=$(awk  -v var="$token"  -F'=' '{  if ( toupper(var) == toupper($1) ) print $2  }' /home/kishen/Workspace/config/jenkins.properties)
+program=$(awk  -v var="$token"  -F'=' '{  if ( toupper(var) == toupper($1) ) print $2  }' //etc/profile.d/jenkins.properties)
 
 if [ -z $program ]; then
     log "$token is invalid" ERROR
@@ -41,13 +41,13 @@ URL="http://${USERNAME}:${APITOKEN}@${JENKINS_SERVER}/${JOB_QUERY}"
 
 BUILD_STATUS_QUERY=/lastBuild/api/json
 log "URL: ${URL}${BUILD_STATUS_QUERY}" 
-JOB_STATUS_JSON=`/home/kishen/anaconda3/bin/curl --silent ${URL}${BUILD_STATUS_QUERY}` 
+JOB_STATUS_JSON=`~/anaconda3/bin/curl --silent ${URL}${BUILD_STATUS_QUERY}` 
 #log "JOB_STATUS_JSON: ${JOB_STATUS_JSON}"
 CURRENT_BUILD_NUMBER_QUERY=/lastBuild/buildNumber
-CURRENT_BUILD_JSON=`/home/kishen/anaconda3/bin/curl --silent ${URL}${CURRENT_BUILD_NUMBER_QUERY}`
+CURRENT_BUILD_JSON=`~/anaconda3/bin/curl --silent ${URL}${CURRENT_BUILD_NUMBER_QUERY}`
 log "CURRENT_BUILD_JSON: ${CURRENT_BUILD_JSON}" 
 LAST_STABLE_BUILD_NUMBER_QUERY=/lastStableBuild/buildNumber
-LAST_STABLE_BUILD_JSON=`/home/kishen/anaconda3/bin/curl --silent ${URL}${LAST_STABLE_BUILD_NUMBER_QUERY}`
+LAST_STABLE_BUILD_JSON=`~/anaconda3/bin/curl --silent ${URL}${LAST_STABLE_BUILD_NUMBER_QUERY}`
 log "LAST_STABLE_BUILD_JSON: ${LAST_STABLE_BUILD_JSON}"
 
 check_build(){
