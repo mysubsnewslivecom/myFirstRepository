@@ -4,7 +4,7 @@
 #################################################
 clear
 
-. /home/kishen/Workspace/config/env.sh
+. /etc/profile.d/env.sh
 
 scriptname=$(basename $0 .sh) 
 scriptlog=/tmp/$scriptname.log
@@ -46,7 +46,7 @@ while getopts j: name
      esac
    done
 
-program=$(awk  -v var="$token"  -F'=' '{  if ( toupper(var) == toupper($1) ) print $2  }' /home/kishen/Workspace/config/jenkins.properties)
+program=$(awk  -v var="$token"  -F'=' '{  if ( toupper(var) == toupper($1) ) print $2  }' /etc/profile.d/jenkins.properties)
 if [ -z $program ]; then
     log "$token is invalid" ERROR
 fi
