@@ -14,7 +14,7 @@ do
     if [ ! -f $i ]; then
         echo "file does not exists. backup failed"
     else
-        cp -iv ${i} ${i}_$(date +%Y%m%d%H%M%S)
+        cp -ivp ${i} ${i}_$(date +%Y%m%d%H%M%S)
     fi
 done
 
