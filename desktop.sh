@@ -53,3 +53,4 @@ printf "Exec=$applnExec\n" >> $fileName
 printf "Icon=$applnIcon\n" >> $fileName
 printf "Terminal=false\n" >> $fileName
 
+log "end of $scriptname"
