@@ -1,5 +1,5 @@
 #!/bin/bash
-. /home/kishen/Workspace/config/env.sh
+. /etc/profile.d/env.sh
 clear
 ScriptDetails
 
