@@ -1,13 +1,8 @@
 #!/bin/bash
 clear
 
-if [ -f /etc/profile.d/env.sh ]; then
-    . /etc/profile.d/env.sh
-else
-        printf "[$(date "+%d-%b-%Y %H:%M:%S") #ERROR] env.sh does not exists\n" 
-    exit 1
-fi 
-#ScriptDetails
+. /home/linux/Workspace/config/env.sh 
+ScriptDetails
 
 usage(){
 
