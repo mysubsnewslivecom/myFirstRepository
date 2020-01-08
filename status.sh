@@ -13,13 +13,16 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
+clear
 if [ -f /etc/profile.d/env.sh ]; then
     . /etc/profile.d/env.sh
 else
-        printf "[$(date "+%d-%b-%Y %H:%M:%S") #ERROR] env.sh does not exists\n" 
+    printf "[$(date "+%d-%b-%Y %H:%M:%S") #ERROR] env.sh does not exists\n" 
     exit 1
 fi
+
+[ $# -eq 0 ] && printf "[$(date "+%d-%b-%Y %H:%M:%S") #ERROR] Usage: $0 appln\n" 
+
 
 PATTERN="\$PID_"${1^^}
 application=`eval echo ${PATTERN}|cut -d'|' -f1`
@@ -56,8 +59,8 @@ statusService() {
 
 
 pid(){
-  local PID=$(ps ax | grep ${PATTERN} | grep java | grep -v grep | awk '{print $1}')
-        statusService "$PID" "${application}"
+    local PID=$(ps ax | grep ${PATTERN} | grep java | grep -v grep | awk '{print $1}')
+    statusService "$PID" "${application}"
 }
 
 pid "${application}"
