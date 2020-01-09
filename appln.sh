@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ -f //etc/profile.d/env.sh ]; then
-    . //etc/profile.d/env.sh
+if [ -f /etc/profile.d/env.sh ]; then
+    . /etc/profile.d/env.sh
 else
         printf "[$(date "+%d-%b-%Y %H:%M:%S") #ERROR] env.sh does not exists\n" 
     exit 1
