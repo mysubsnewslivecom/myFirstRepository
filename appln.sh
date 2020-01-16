@@ -9,7 +9,7 @@ fi
 
 if [ $# -ne 1 ];
 then
-	echo "USAGE: $0 [-daemon] server.properties [--override property=value]*"
+	echo "USAGE: $0 -start/-stop/-status"
 	exit 1
 fi
 
